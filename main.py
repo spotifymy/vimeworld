@@ -1,13 +1,13 @@
 from vk_api.bot_longpoll import VkBotLongPoll, VkBotEventType
 import vk_api
 
-vk_implicit = vk_api.VkApi(token="aa55f0a6baca1eecdce996c3a079dfe4a2c1ee8d374f23c5d2d7fc4531f14dcdda7c0b8e0e567f31c4dfc")
+vk_implicit = vk_api.VkApi(token="2572dc16e8b567fb88d318b1033a73dc9f303aa1ad2e483092648f613dd7204c99bfeb6d95a910712e4de")
 vk_implicit._auth_token()
 
-vk = vk_api.VkApi(token="d138473f347003bf5589494d0ccb34930405b9512f5d129fa943f815cb57b65d0c36d9a275220916249be")
+vk = vk_api.VkApi(token="3e50516412587e272dcbd1f3210af23c3dc660bdc43f5ac0563d1473a94fe9552dd75f71558ff717cdb5f")
 vk._auth_token()
 vk.get_api()
-longpoll = VkBotLongPoll(vk, 195570123)
+longpoll = VkBotLongPoll(vk, 195573855)
 
 while True:
     for event in longpoll.listen():
@@ -21,24 +21,24 @@ while True:
                     try:
                         if textToWords[1] == "add":
                             try:
-                                text = vk_implicit.method("wall.get", {"owner_id": -195570123})["items"][0]["text"]
-                                id = vk_implicit.method("wall.get", {"owner_id": -195570123})["items"][0]["id"]
+                                text = vk_implicit.method("wall.get", {"owner_id": -195573855})["items"][0]["text"]
+                                id = vk_implicit.method("wall.get", {"owner_id": -195573855})["items"][0]["id"]
 
-                                vk_implicit.method("wall.delete", {"owner_id": -195570123, "post_id": id})
-                                vk_implicit.method("wall.post", {"owner_id": -195570123, "from_group": 1, "message": text + "\n" + textToWords[2]})
+                                vk_implicit.method("wall.delete", {"owner_id": -195573855, "post_id": id})
+                                vk_implicit.method("wall.post", {"owner_id": -195573855, "from_group": 1, "message": text + "\n" + textToWords[2]})
                                 vk.method("messages.send", {"peer_id": 598391185, "message": "Лицензия активирована", "random_id": 0})
                             except IndexError:
                                 vk.method("messages.send", {"peer_id": 598391185,
                                                             "message": "Неверная команда. Используйте: /server add [HWID]",
                                                             "random_id": 0})
-                                vk_implicit.method("wall.post", {"owner_id": -195570123, "from_group": 1, "message": text})
+                                vk_implicit.method("wall.post", {"owner_id": -195573855, "from_group": 1, "message": text})
                         elif textToWords[1] == "remove":
                             try:
-                                text = vk_implicit.method("wall.get", {"owner_id": -195570123})["items"][0]["text"]
-                                id = vk_implicit.method("wall.get", {"owner_id": -195570123})["items"][0]["id"]
+                                text = vk_implicit.method("wall.get", {"owner_id": -195573855})["items"][0]["text"]
+                                id = vk_implicit.method("wall.get", {"owner_id": -195573855})["items"][0]["id"]
 
-                                vk_implicit.method("wall.delete", {"owner_id": -195570123, "post_id": id})
-                                vk_implicit.method("wall.post", {"owner_id": -195570123, "from_group": 1, "message": text.replace("\n" + textToWords[2], "")})
+                                vk_implicit.method("wall.delete", {"owner_id": -195573855, "post_id": id})
+                                vk_implicit.method("wall.post", {"owner_id": -195573855, "from_group": 1, "message": text.replace("\n" + textToWords[2], "")})
                                 vk.method("messages.send", {"peer_id": 598391185, "message": "Лицензия удалена", "random_id": 0})
                             except IndexError:
                                 vk.method("messages.send", {"peer_id": 598391185,
