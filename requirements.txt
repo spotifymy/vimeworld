@@ -19,7 +19,7 @@ soupsieve==2.0.1
 spark-parser==1.8.9
 uncompyle6==3.7.0
 unpy2exe==0.4
-urllib3==1.25.9
+urllib3==1.26.5
 uuid==1.30
 vk-api==11.8.0
 wget==3.2
